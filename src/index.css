@@ -1,4 +1,35 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+/* Self-hosted Poppins (latin subset, OFL: public/fonts/OFL.txt). The fallback faces are Arial scaled to
+   Poppins metrics (computed with fontTools), so the swap to Poppins does not shift layout. */
+@font-face {
+  font-family: "Poppins";
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/poppins-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/poppins-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Poppins Fallback";
+  font-weight: 400;
+  src: local("Arial"), local("ArialMT");
+  size-adjust: 113.13%;
+  ascent-override: 92.82%;
+  descent-override: 30.94%;
+  line-gap-override: 8.84%;
+}
+@font-face {
+  font-family: "Poppins Fallback";
+  font-weight: 600;
+  src: local("Arial Bold"), local("Arial-BoldMT");
+  size-adjust: 107.06%;
+  ascent-override: 98.07%;
+  descent-override: 32.69%;
+  line-gap-override: 9.34%;
+}
 
 @tailwind base;
 @tailwind components;
@@ -8,7 +39,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", "Poppins Fallback", sans-serif;
   scroll-behavior: smooth;
   color-scheme: dark;
 }

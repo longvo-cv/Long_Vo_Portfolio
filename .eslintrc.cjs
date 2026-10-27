@@ -7,12 +7,15 @@ module.exports = {
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'public/vendor'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
     'react/jsx-no-target-blank': 'off',
+    'react/prop-types': 'off',
+    // react-three-fiber props on three.js objects, not DOM attributes.
+    'react/no-unknown-property': ['error', { ignore: ['object', 'position-y', 'rotation-y', 'rotation'] }],
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },

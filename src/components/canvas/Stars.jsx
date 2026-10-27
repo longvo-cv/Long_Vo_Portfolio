@@ -1,6 +1,7 @@
 import { useState, useRef, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Points, PointMaterial, Preload } from "@react-three/drei";
+import { Points, PointMaterial } from "@react-three/drei";
+import { useInView } from "framer-motion";
 import * as random from "maath/random/dist/maath-random.esm";
 
 const Stars = (props) => {
@@ -23,14 +24,14 @@ const Stars = (props) => {
 }
 
 const StarsCanvas = () => {
+  const wrapper = useRef(null);
+  const inView = useInView(wrapper);
   return (
-    <div className='w-full h-auto absolute inset-0 z-[-1]'>
-      <Canvas camera={{ position: [0, 0, 1] }}>
+    <div ref={wrapper} className='w-full h-auto absolute inset-0 z-[-1]'>
+      <Canvas camera={{ position: [0, 0, 1] }} frameloop={inView ? "always" : "never"}>
         <Suspense fallback={null}>
           <Stars />
         </Suspense>
-
-        <Preload all />
       </Canvas>
     </div>
   );
