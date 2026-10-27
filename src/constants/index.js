@@ -1,34 +1,22 @@
 import {
-  mobile,
-  backend,
-  creator,
-  web,
-  javascript,
-  typescript,
-  html,
-  css,
-  reactjs,
-  tailwind,
-  nodejs,
-  mongodb,
-  figma,
-  docker,
   Social_Plane,
   Trading_Gurus,
   Stock_Predictor,
-  threejs,
   sotatek,
   ro,
   constantContact,
   fpt,
   smac,
-  aws,
-  django,
-  postgresql,
-  python,
   DanShultz,
   JustinHannus,
 } from "../assets";
+
+export const links = {
+  resume: "/Long_Vo_Resume.pdf",
+  github: "https://github.com/longvo-cv",
+  linkedin: "https://www.linkedin.com/in/long-vo/",
+  email: "longvo.cv@gmail.com",
+};
 
 export const navLinks = [
   {
@@ -36,8 +24,16 @@ export const navLinks = [
     title: "About",
   },
   {
-    id: "work",
-    title: "Work",
+    id: "lkdv",
+    title: "Case study",
+  },
+  {
+    id: "experience",
+    title: "Experience",
+  },
+  {
+    id: "projects",
+    title: "Projects",
   },
   {
     id: "contact",
@@ -45,76 +41,37 @@ export const navLinks = [
   },
 ];
 
-const services = [
-  {
-    title: "Backend Developer",
-    icon: backend,
-  },
-  {
-    title: "Web Developer",
-    icon: web,
-  },
-  {
-    title: "React Developer",
-    icon: mobile,
-  },
-  {
-    title: "Software Design",
-    icon: creator,
-  },
-];
+export const hero = {
+  intro:
+    "I build production backend systems and web apps, most recently a multi-tenant pharmacy SaaS used by real stores in Vietnam.",
+  stack: "TypeScript, Python, Node.js, Next.js, Firestore, AWS, LLMs",
+};
 
-const technologies = [
-  {
-    name: "Python",
-    icon: python,
-  },
-  {
-    name: "JavaScript",
-    icon: javascript,
-  },
-  {
-    name: "React JS",
-    icon: reactjs,
-  },
-  {
-    name: "AWS",
-    icon: aws,
-  },
-  {
-    name: "PostgreSQL",
-    icon: postgresql,
-  },
+export const about = `Full-stack engineer with an M.S. in Computer Science from UMass Amherst (May 2026). I've shipped Python and Java microservices, healthcare checkout flows, and a pharmacy platform used by real stores in Vietnam. I care about correctness under messy real-world conditions: flaky networks, old hardware, and money that has to add up.`;
 
-  {
-    name: "Tailwind CSS",
-    icon: tailwind,
-  },
-  {
-    name: "Node JS",
-    icon: nodejs,
-  },
-  {
-    name: "MongoDB",
-    icon: mongodb,
-  },
-  {
-    name: "Three JS",
-    icon: threejs,
-  },
-  {
-    name: "figma",
-    icon: figma,
-  },
-  {
-    name: "docker",
-    icon: docker,
-  },
-  {
-    name: "django",
-    icon: django,
-  },
-];
+export const lkdv = {
+  name: "LKDV-Pharma",
+  title: "Software Engineer",
+  dates: "June 2025 - Present",
+  context: `Multi-tenant pharmacy management SaaS in Vietnam with three apps: staff POS, customer storefront, and admin console. Live with paying pharmacies in Vietnam.`,
+  problems: [
+    {
+      title: "Security",
+      text: "Audited the API and found unauthenticated staff-creation and order endpoints plus a debug route leaking config. Added auth and tenant scoping with a log-first, enforce-later rollout so live stores never broke.",
+    },
+    {
+      title: "Data integrity",
+      text: "Rewrote stock deduction as an atomic Firestore transaction behind a per-tenant flag, piloted in production on a test store. Stopped duplicate POS orders from network retries with an idempotency lock.",
+    },
+    {
+      title: "AI in production",
+      text: "Gemini OCR reads supplier invoices into inventory, with a required human review step before anything commits. I run development through coding agents (Claude Code, Cursor) with staged prompts and verification gates, and added fail-closed guards after catching a test writing to production.",
+    },
+  ],
+  also: `Payment webhooks (Casso, VietQR); Vietnamese tax ledger exports (Docxtemplater); POS on Android 7 hardware with a bundled GeckoView engine; Vitest and Playwright.`,
+  stack:
+    "Turborepo, Next.js, TypeScript, Tailwind, Node/Express, Firestore, Railway, Vercel, Upstash Redis, Gemini.",
+};
 
 const experiences = [
   {
@@ -124,22 +81,21 @@ const experiences = [
     iconBg: "#383E56",
     date: "July 2023 - February 2024",
     points: [
-      "Collaborated on the development of microservices using Python/Django and Java/Spring, enhancing application scalability and performance.",
-      "Spearheaded a Instagram/Tiktok data scraping project using Akka toolkit and Scala for web scraping, integrated with Mongo Atlas for data storage, and deployed on AWS infrastructure managed through Terraform. ",
-      "Pioneered a service using Python HikerAPI and Redis Queue to analyze and track daily reels for song promotions, significantly impacting the promotion strategy for over 40,000 creators.",
+      "Built microservices in Python/Django and Java/Spring.",
+      "Led an Instagram/TikTok scraping pipeline in Scala/Akka, storing to MongoDB Atlas, deployed on AWS with Terraform.",
+      "Built a reel-tracking service (HikerAPI, Redis Queue) used to steer song promotion across 40,000+ creators.",
     ],
   },
   {
-    title: "Software Engineer Fellow ",
+    title: "Software Engineer Fellow",
     company_name: "Ro",
     icon: ro,
     iconBg: "#E6DEDD",
     date: "Jun 2022 - Sep 2022",
     points: [
-      "Developed SQL and Django ORM queries to audit and refactor legacy system configurations, improving system efficiency and maintainability.",
-      "Enhanced API flexibility to support dynamic configuration parameters, increasing adaptability for client  needs.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Created new reusable checkout library components and updated numerous online visit configurations, making the system more modular and flexible. Managed manual testing scenarios for 34 end-to-end online visit flows.",
+      "Audited and refactored legacy configuration with SQL and Django ORM.",
+      "Extended APIs to accept dynamic configuration parameters.",
+      "Built reusable checkout components and owned manual testing of 34 end-to-end online visit flows.",
     ],
   },
   {
@@ -147,13 +103,11 @@ const experiences = [
     company_name: "Constant Contact",
     icon: constantContact,
     iconBg: "#383E56",
-    date: " Sep 2021 - Jan 2022 ",
+    date: "Sep 2021 - Jan 2022",
     points: [
-      "Developed contact management features using Ruby on Rails and JavaScript (React, Backbone).",
-      "Integrated Google Analytics tracking and implemented a new dialogs component for the React tech stack.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Implement new dialogs component to accommodate the company’s new React tech stack.",
-      "Created Protractor unit tests to enhance code coverage and identify bugs.",
+      "Built contact management features in Ruby on Rails and React/Backbone.",
+      "Built a new React dialogs component and added Google Analytics tracking.",
+      "Wrote Protractor tests that raised coverage and surfaced bugs.",
     ],
   },
   {
@@ -163,24 +117,45 @@ const experiences = [
     iconBg: "#E6DEDD",
     date: "Feb 2021 - May 2021",
     points: [
-      "The largest information technology service in Vietnam, focusing primarily on ICT-related services .",
-      "Utilized React to collect reporting data onto a centralized website to streamline workflow .",
-      "Proposed and designed the centralized system of data management sites with Figma, built new React components, and rewrote old Angular components to React.",
-      "ntegrated login authentication and APIs to get FPT’s subsidiaries’ reporting data and data providers.",
+      "Designed (Figma) and built a central React reporting site for FPT subsidiaries, migrating Angular components to React.",
+      "Integrated login authentication and subsidiary reporting APIs.",
     ],
   },
   {
     title: "Software Engineer Intern",
-    company_name: "SMAC Innovation JSC",
+    company_name: "SMAC Innovation",
     icon: smac,
     iconBg: "#E6DEDD",
     date: "Jun 2019 - Sep 2019",
     points: [
-      "Collaborated with the core team to build a new Android app using React Native and Android Studio.",
-      "Utilized APIs like Google Map Navigation and Facebook Authentication to create a mobile wallet app for drivers, increasing app functionality.",
-      "Improved mobile application performance with progressive loading, increasing visual completeness from 73% to 93% and reducing user bounce rate.",
+      "Built a React Native driver wallet app with Google Maps and Facebook auth.",
+      "Raised visual completeness from 73% to 93% with progressive loading.",
     ],
   },
+];
+
+export const skills = [
+  {
+    title: "Production systems",
+    items: "Transactions, idempotency, staged rollouts, webhooks",
+  },
+  {
+    title: "Security",
+    items: "API auth, tenant isolation, secret handling, audits",
+  },
+  {
+    title: "AI/LLM",
+    items: "OCR pipelines, human-in-the-loop review, agent-driven development, audio signal processing, on-device ML",
+  },
+  {
+    title: "Web",
+    items: "TypeScript, React, Next.js, Vue.js, Node, Python/Django, SQL, Firestore, AWS",
+  },
+];
+
+export const education = [
+  "M.S. Computer Science, UMass Amherst, May 2026",
+  "B.S., University of Massachusetts Amherst, 2022",
 ];
 
 const testimonials = [
@@ -203,6 +178,76 @@ const testimonials = [
 ];
 
 const projects = [
+  {
+    name: lkdv.name,
+    description: "Multi-tenant pharmacy management SaaS in Vietnam with three apps: staff POS, customer storefront, and admin console.",
+    tags: [
+      {
+        name: "nextjs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "typescript",
+        color: "green-text-gradient",
+      },
+      {
+        name: "firestore",
+        color: "pink-text-gradient",
+      },
+    ],
+    case_study_link: "#lkdv",
+  },
+  {
+    name: "Rhythm Signal Engine",
+    subtitle: "Project Meridian · 2026",
+    description:
+      "An on-device audio pipeline for a privacy-first clinical session analysis tool. I turned peer-reviewed psychotherapy research on speech rate and turn-taking into production TypeScript modules: response latency, speech-rate deceleration, and combined anomaly detection. Voice activity detection and transcription run locally, so no audio leaves the machine. Testing against real audio caught two measurement-calibration bugs before they shipped.",
+    tags: [
+      {
+        name: "typescript",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "audio-dsp",
+        color: "green-text-gradient",
+      },
+      {
+        name: "on-device-ml",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "privacy",
+        color: "blue-text-gradient",
+      },
+    ],
+  },
+  {
+    name: "Stroke Recovery App",
+    subtitle: "Oct 2024 - May 2025",
+    description:
+      "A Vue.js mobile app built with physical therapists and 50+ stroke survivors. It analyzes motor-function data to shape personalized recovery plans, which cut therapist consultation time by 40%. Progress dashboards track recovery milestones across speech, motor, and cognitive domains, and raised patient engagement by 60%.",
+    tags: [
+      {
+        name: "vuejs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "mobile",
+        color: "green-text-gradient",
+      },
+      {
+        name: "healthcare",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "data-viz",
+        color: "blue-text-gradient",
+      },
+    ],
+  },
+];
+
+const earlierProjects = [
   {
     name: "Social Plane",
     description:
@@ -264,8 +309,7 @@ const projects = [
       },
     ],
     image: Stock_Predictor,
-    source_code_link: "https://github.com/longvo-cv",
   },
 ];
 
-export { services, technologies, experiences, testimonials, projects };
+export { experiences, testimonials, projects, earlierProjects };

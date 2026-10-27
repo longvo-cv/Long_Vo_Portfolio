@@ -1,4 +1,3 @@
-import React from "react";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -8,10 +7,12 @@ import { styles } from "../styles";
 import { experiences } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { textVariant } from "../utils/motion";
+import { useHydrated } from "../utils/client";
 import "react-vertical-timeline-component/style.min.css";
 
-const ExperienceCard = ({ experience }) => (
+const ExperienceCard = ({ experience, visible }) => (
   <VerticalTimelineElement
+    visible={visible}
     contentStyle={{
       background: "#1d1836",
       color: "#fff",
@@ -22,6 +23,7 @@ const ExperienceCard = ({ experience }) => (
     icon={
       <div className="flex justify-center items-center w-full h-full">
         <img
+          loading="lazy"
           src={experience.icon}
           alt={experience.company_name}
           className="w-[60%] h-[60%] object-contain"
@@ -53,13 +55,15 @@ const ExperienceCard = ({ experience }) => (
 );
 
 const Experience = () => {
+  // Visible in the prerendered HTML; after hydration, cards below the fold bounce in as before.
+  const hydrated = useHydrated();
   return (
     <>
       <motion.div variants={textVariant()}>
         {/* <p className={styles.sectionSubText}>
           
         </p> */}
-        <h2 className={styles.sectionHeadText}>Work Experience</h2>
+        <h2 className={styles.sectionHeadText}>Experience</h2>
       </motion.div>
       <div className="mt-20 flex flex-col">
         <VerticalTimeline>
@@ -67,6 +71,7 @@ const Experience = () => {
             <ExperienceCard
               key={`experience-${index}`}
               experience={experience}
+              visible={!hydrated}
             />
           ))}
         </VerticalTimeline>
@@ -75,4 +80,6 @@ const Experience = () => {
   );
 };
 
-export default SectionWrapper(Experience, "work");
+const ExperienceSection = SectionWrapper(Experience, "experience");
+
+export default ExperienceSection;
